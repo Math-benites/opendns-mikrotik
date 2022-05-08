@@ -45,7 +45,14 @@ SEU NETWORKING NAME OPEN-DNS
 # EXTRA
 
 Pode ser usado em script > Scheduler
+
 Script nao gera log desnecessario , apenas quando ip é diferente do antigo ele registra em log para auditar
+
+#Creditos
+Matheus Benites
+
+
+https://www.linkedin.com/in/matheus-benites/
 
 
 
