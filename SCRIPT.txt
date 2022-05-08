@@ -1,0 +1,23 @@
+:local odnsuser "SEU EMAIL"
+
+#  SUA SENHA NAO PODER TER CIFRAO # 
+:local odnspass "SUA SENHA"
+
+#  SEU NOME DE NETWORKING CRIE GRATUITO - https://www.dnsomatic.com/#
+:local odnshost "SEU NETWORKING NAME"
+
+#----SCRIPT NAO ALTERAR -----#
+:global previousIP;
+:global currentIP [:resolve myip.opendns.com server=208.67.222.222];
+:if ($currentIP != $previousIP ) do={
+:log info "OpenDNS: Update needed"
+:set previousIP $currentIP
+:local url "https://updates.opendns.com/nic/update\3Fhostname=$odnshost"
+:log info "OpenDNS: Sending update for $odnshost"
+/tool fetch url="https://updates.opendns.com/nic/update\3Fhostname=$odnshost" user=$odnsuser password=$odnspass mode=http dst-path=("/net_odns.txt")
+:delay 2;
+:local odnsReply [/file get net_odns.txt contents];
+:log info "OpenDNS update complete."
+:log info "OpenDNS reply was $odnsReply";
+} else={
+}
