@@ -1,9 +1,5 @@
 :local odnsuser "SEU EMAIL"
-
-#  SUA SENHA NAO PODER TER CIFRAO # 
 :local odnspass "SUA SENHA"
-
-#  SEU NOME DE NETWORKING CRIE GRATUITO - https://www.dnsomatic.com/#
 :local odnshost "SEU NETWORKING NAME"
 
 #----SCRIPT NAO ALTERAR -----#
@@ -20,4 +16,5 @@
 :log info "OpenDNS update complete."
 :log info "OpenDNS reply was $odnsReply";
 } else={
+
 }
