@@ -17,7 +17,7 @@ Dificuldade = basico
 
 <img src="/README/OPENDNS.png" alt="OPENDNS"/>
 
-2- Crie um uma conta Free no DNSOMATIC
+2- Crie um uma conta Free no DNSOMATIC ( https://www.dnsomatic.com/ )
 
 <img src="/README/DNSOMATIC.png" alt="DNSOMATIC"/>
 
