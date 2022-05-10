@@ -8,7 +8,6 @@
 :if ($currentIP != $previousIP ) do={
 :log info "OpenDNS: Update needed"
 :set previousIP $currentIP
-:local url "https://updates.opendns.com/nic/update\3Fhostname=$odnshost"
 :log info "OpenDNS: Sending update for $odnshost"
 /tool fetch url="https://updates.opendns.com/nic/update\3Fhostname=$odnshost" user=$odnsuser password=$odnspass mode=http dst-path=("/net_odns.txt")
 :delay 2;
