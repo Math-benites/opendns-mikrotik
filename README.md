@@ -88,7 +88,10 @@ Quando o ip mudar voce vai ver isso aqui abaixo no seu log mikrotik
 # EXTRA
 
 Regra para definir rede que deve ser aplicado o OPENDNS (altere conforme necessario)
+
 src-address= rede local
+
+in-interface="ether4 - LAN"
 ```
 /ip firewall nat
 
