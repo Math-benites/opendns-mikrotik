@@ -1,35 +1,70 @@
-# opendns-mikrotik-update
-update OPEN DNS no mikrotik com (DNS-O-Matic) 
+<h1 align="center">opendns-mikrotik-update-dynamic</h1> 
 
+✔️ RouterOS 6
 
-## Requisitos
-
-Dificuldade = basico
-
-1 - Tenha uma conta na OPEN DNS https://www.opendns.com/ (CREATE ACCOUNT FREE)
-
-2 - Saiba utilizar o basico de OPEN DNS
+✔️ RouterOS 7
 
 ---
-## Configuracao de ambiente
 
-1- Crie um network name 
+### Pré-requisitos
 
-<img src="/README/OPENDNS.png" alt="OPENDNS"/>
+🛎️ Crie contas no site abaixo para seguir o passo a passo
 
-2- Crie um uma conta Free no DNSOMATIC ( https://www.dnsomatic.com/ )
+🛑 Por limitacoes que ate o momento quero resolver , crie uma senha usando simbolo especial # (exemplo: Willpull22#)
 
-<img src="/README/DNSOMATIC.png" alt="DNSOMATIC"/>
+🛑 Script pode nao funcionar se a senha tiver @ * $
 
-3- Adicione um servico do OPEN DNS e selecione o network name 
+DNSOMATIC https://www.dnsomatic.com/ (CREATE ACCOUNT FREE)
 
-<img src="/README/DNSOMATIC-SELECIONAR.png" alt="DNSOMATIC-SELECIONAR"/>
+OPEN DNS https://www.opendns.com/ (CREATE ACCOUNT FREE)
 
-4- Veja como atualiza com seu email :: network name --- > seu endereco publico
+---
 
-<img src="/README/DNSOMATIC-NETWORKINGNAME.png" alt="DNSOMATIC-SELECIONAR"/>
+### 👀 como fazer usar opendns filtros
 
-## Configuracao Mikrotik Script
+https://www.youtube.com/watch?v=vXncOSdeQLQ
+
+---
+
+### 🪓 Configuracao de ambiente
+
+1- Acesse o OPENDNS , crie uma NETWORKING
+<p float="left">
+ <img src="/README/1.png" width="600" />
+<p>
+
+2- Defina uma Nome de NETWORKING
+<p float="left">
+ <img src="/README/2.png" width="600" />
+<p>
+
+3- Crie um uma conta Free no DNSOMATIC ( https://www.dnsomatic.com/ )
+
+<p float="left">
+ <img src="/README/3.png" width="600" />
+<p>
+
+4- Adicione um servico do OPEN DNS e selecione o network name 
+
+<p float="left">
+ <img src="/README/4.png" width="600" />
+<p>
+
+<p float="left">
+ <img src="/README/4.1.png" width="600" />
+<p>
+
+😎 Concluido a configuracao no portal
+
+---
+
+## Configuracao Mikrotik
+
+<p float="left">
+ <img src="/README/5.png" width="600" />
+<p>
+
+Cole script.txt e altere o campo abaixo com credenciais do DNSOMATIC
 
 ```
 SEU EMAIL OPEN-DNS
@@ -42,15 +77,35 @@ SEU NETWORKING NAME OPEN-DNS
 :local odnshost "SEU NETWORKING NAME"
 ```
 
+Quando o ip mudar voce vai ver isso aqui abaixo no seu log mikrotik
+
+<p float="left">
+ <img src="/README/6.png" width="600" />
+<p>
+
+---
+
 # EXTRA
 
-Pode ser usado em script > Scheduler
+Regra para definir rede que deve ser aplicado o OPENDNS (altere conforme necessario)
+src-address= rede local
+```
+/ip firewall nat
 
-Script nao gera log desnecessario , apenas quando ip é diferente do antigo ele registra em log para auditar
+add action=dst-nat chain=dstnat comment=OPENDNS dst-port=53 in-interface=\
+    "ether4 - LAN" protocol=udp src-address=192.168.0.0/24 to-addresses=\
+    208.67.222.222 to-ports=53
+
+add action=dst-nat chain=dstnat comment=OPENDNS2 dst-port=53 in-interface=\
+    "ether4 - LAN" protocol=udp src-address=192.168.0.0/24 to-addresses=\
+    208.67.220.220 to-ports=53
+```
+Pode ser usado em script > Scheduler recomendado atualizacao acada 3 min
+
+🧠 Script nao gera log desnecessario , apenas quando ip é diferente do antigo ele registra em log para auditar
 
 #Creditos
 Matheus Benites
-
 
 https://www.linkedin.com/in/matheus-benites/
 
