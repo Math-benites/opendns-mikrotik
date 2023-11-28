@@ -20,7 +20,7 @@ OPEN DNS https://www.opendns.com/ (CREATE ACCOUNT FREE)
 
 ---
 
-### 👀 como fazer usar opendns filtros
+### 👀 como usar opendns filtros
 
 https://www.youtube.com/watch?v=vXncOSdeQLQ
 
